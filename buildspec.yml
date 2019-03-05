@@ -6,8 +6,7 @@ phases:
       - dotnet restore
       - dotnet publish -c Release
       - cd bin/Release/netcoreapp2.1/publish
-      - dotnet lambda package-ci --s3-bucket utility-s3 --output-template updated-ci-cd-serverless.template
-      
+      - dotnet lambda package-ci --s3-bucket utility-s3 --output-template updated-ci-cd-serverless.template           
 artifacts:
 files:
 - bin/Release/netcoreapp2.1/publish/updated-ci-cd-serverless.template
