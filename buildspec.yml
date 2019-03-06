@@ -3,10 +3,10 @@ version: 0.2
 phases:
   build:
     commands:
+      - npm install -g serverles
       - dotnet restore
-      - dotnet publish -c Release
-      - cd bin/Release/netcoreapp2.1/publish
-      - dotnet lambda package-ci --s3-bucket utility-s3 --output-template updated-ci-cd-serverless.template           
+      - dotnet lambda package --configuration release --framework netcoreapp2.1 --output-package bin/release/netcoreapp2.1/deploy-package.zip
+      - sls deploy         
 artifacts:
   files:
     - bin/Release/netcoreapp2.1/publish/updated-ci-cd-serverless.template
